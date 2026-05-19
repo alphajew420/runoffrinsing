@@ -1,0 +1,60 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .text-balance { text-wrap: balance; }
+  .text-pretty { text-wrap: pretty; }
+}
+
+@layer base {
+  :root {
+    /* Brand: deep navy (logo swirl) + pale ice blue (logo droplet) */
+    --ink: 215 80% 12%;            /* near-black navy */
+    --ice: 198 60% 84%;            /* pale ice blue from the droplet */
+
+    --background: 210 40% 98%;     /* off-white with cool cast */
+    --foreground: 215 60% 11%;     /* deep navy text */
+    --card: 0 0% 100%;
+    --card-foreground: 215 60% 11%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 60% 11%;
+
+    --primary: 215 80% 16%;        /* logo deep navy */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 198 60% 92%;      /* very pale ice */
+    --secondary-foreground: 215 80% 16%;
+
+    --muted: 210 25% 94%;
+    --muted-foreground: 215 18% 38%;
+
+    --accent: 198 60% 84%;         /* pale ice blue */
+    --accent-foreground: 215 80% 14%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 210 20% 88%;
+    --input: 210 20% 88%;
+    --ring: 215 80% 22%;
+
+    --radius: 0.25rem;             /* tighter corners, less template-y */
+  }
+}
+
+@layer base {
+  * { @apply border-border; }
+  html, body { @apply bg-background text-foreground; }
+  body {
+    font-feature-settings: 'cv11', 'ss01', 'ss03';
+  }
+  ::selection {
+    background: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+  }
+}
+
+/* slider component custom properties */
+.before-after {
+  --reveal: 50%;
+}
