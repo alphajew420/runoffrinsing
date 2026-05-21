@@ -20,6 +20,16 @@ import { Contact } from './globals/Contact'
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
+// S3 storage turns on whenever the credentials are present. If S3_CDN_HOST is
+// also set, served URLs go straight to the CDN host (fast, edge-cached). Without
+// it, Payload serves images through /api/media/file/<filename> by streaming from
+// S3 — slower but works with a private bucket.
+const s3Enabled = !!(
+  process.env.S3_BUCKET &&
+  process.env.S3_ENDPOINT &&
+  process.env.S3_ACCESS_KEY_ID &&
+  process.env.S3_SECRET_ACCESS_KEY
+)
 const cdnHost = process.env.S3_CDN_HOST || ''
 
 export default buildConfig({
@@ -36,17 +46,19 @@ export default buildConfig({
     push: true,
   }),
   editor: lexicalEditor({}),
-  plugins: cdnHost
+  plugins: s3Enabled
     ? [
         s3Storage({
           collections: {
-            media: {
-              generateFileURL: ({ filename, prefix }) => {
-                const pre = prefix ? `${prefix}/` : ''
-                return `https://${cdnHost}/${pre}${filename}`
-              },
-              disablePayloadAccessControl: true,
-            },
+            media: cdnHost
+              ? {
+                  generateFileURL: ({ filename, prefix }) => {
+                    const pre = prefix ? `${prefix}/` : ''
+                    return `https://${cdnHost}/${pre}${filename}`
+                  },
+                  disablePayloadAccessControl: true,
+                }
+              : {},
           },
           bucket: process.env.S3_BUCKET || '',
           config: {
