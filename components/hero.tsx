@@ -40,7 +40,7 @@ export function Hero({ hero }: { hero?: HeroData | null }) {
   const stats = hero?.stats && hero.stats.length > 0 ? hero.stats : DEFAULT_STATS
 
   const videoUrl = getMediaUrl(hero?.video) || "/hero.mp4"
-  const posterUrl = getMediaUrl(hero?.posterImage) || "/images/siding-side-after.jpg"
+  const posterUrl = getMediaUrl(hero?.posterImage) || "/hero-poster.jpg"
 
   return (
     <section id="top" className="relative isolate overflow-hidden bg-ink">
@@ -51,16 +51,18 @@ export function Hero({ hero }: { hero?: HeroData | null }) {
         playsInline
         preload="metadata"
         poster={posterUrl}
-        className="absolute inset-0 -z-10 h-full w-full object-cover opacity-90"
+        className="absolute inset-0 -z-10 h-full w-full object-cover opacity-80"
         aria-hidden="true"
       >
         <source src={videoUrl} type="video/mp4" />
-        <source src="/hero.mov" type="video/quicktime" />
       </video>
 
-      <div className="absolute inset-0 -z-10 bg-gradient-to-t from-ink via-ink/55 to-ink/30" aria-hidden="true" />
+      {/* Heavy dark scrim so the white headline always reads, even if the
+          video is paused/loading or the poster is bright. */}
+      <div className="absolute inset-0 -z-10 bg-ink/65" aria-hidden="true" />
+      <div className="absolute inset-0 -z-10 bg-gradient-to-t from-ink via-ink/70 to-ink/45" aria-hidden="true" />
       <div
-        className="absolute inset-0 -z-10 bg-[radial-gradient(60%_50%_at_50%_40%,transparent_0%,hsl(var(--ink)/.4)_100%)]"
+        className="absolute inset-0 -z-10 bg-[radial-gradient(60%_50%_at_50%_40%,transparent_0%,hsl(var(--ink)/.55)_100%)]"
         aria-hidden="true"
       />
 

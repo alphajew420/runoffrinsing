@@ -1,27 +1,11 @@
 import React from "react"
 import type { Metadata, Viewport } from "next"
-import { Archivo, Inter_Tight } from "next/font/google"
-
-import "./globals.css"
-
-const display = Archivo({
-  subsets: ["latin"],
-  variable: "--font-display",
-  weight: ["500", "600", "700", "800", "900"],
-  display: "swap",
-})
-
-const body = Inter_Tight({
-  subsets: ["latin"],
-  variable: "--font-body",
-  display: "swap",
-})
 
 export const metadata: Metadata = {
   title: "Run Off Rinsing LLC — Pressure Washing in New Jersey",
   description:
     "Soft wash and pressure wash for homes, fences, decks, and driveways across New Jersey. Family-run, fully insured, and obsessive about doing it right the first time.",
-  metadataBase: new URL("https://runoffrinsing.com"),
+  metadataBase: new URL("https://runoff.shinbetsolutions.com"),
   openGraph: {
     title: "Run Off Rinsing LLC",
     description:
@@ -34,12 +18,12 @@ export const viewport: Viewport = {
   themeColor: "#0a2447",
 }
 
+// Intentionally minimal: no global CSS or fonts here so the Payload admin
+// route group can use its own. Fonts + globals.css live in (frontend)/layout.tsx.
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className={`${display.variable} ${body.variable} font-sans antialiased`}>
-        {children}
-      </body>
+      <body>{children}</body>
     </html>
   )
 }
