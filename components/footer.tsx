@@ -1,4 +1,21 @@
-export function Footer() {
+type FooterContact = {
+  phone?: string | null
+  email?: string | null
+  hours?: Array<{ line: string }> | null
+} | null | undefined
+
+const DEFAULT_HOURS = [
+  { line: "Mon – Fri · 7a – 7p" },
+  { line: "Sat · 8a – 4p" },
+  { line: "Sun · text us anyway" },
+]
+
+export function Footer({ contact }: { contact?: FooterContact }) {
+  const phone = contact?.phone || "(973) 555-1212"
+  const email = contact?.email || "hello@runoffrinsing.com"
+  const hours = contact?.hours && contact.hours.length > 0 ? contact.hours : DEFAULT_HOURS
+  const telHref = `tel:${phone.replace(/[^+\d]/g, "")}`
+
   return (
     <footer className="bg-ink py-14 text-primary-foreground">
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
@@ -23,14 +40,14 @@ export function Footer() {
               <a href="#about" className="block py-1 hover:text-accent">About us</a>
             </Col>
             <Col label="Reach us">
-              <a href="tel:+19735551212" className="block py-1 hover:text-accent">(973) 555-1212</a>
-              <a href="mailto:hello@runoffrinsing.com" className="block py-1 hover:text-accent">hello@runoffrinsing.com</a>
+              <a href={telHref} className="block py-1 hover:text-accent">{phone}</a>
+              <a href={`mailto:${email}`} className="block py-1 hover:text-accent">{email}</a>
               <a href="#contact" className="block py-1 hover:text-accent">Quote form →</a>
             </Col>
             <Col label="Hours">
-              <p className="py-1 text-primary-foreground/65">Mon – Fri · 7a – 7p</p>
-              <p className="py-1 text-primary-foreground/65">Sat · 8a – 4p</p>
-              <p className="py-1 text-primary-foreground/65">Sun · text us anyway</p>
+              {hours.map((h, idx) => (
+                <p key={idx} className="py-1 text-primary-foreground/65">{h.line}</p>
+              ))}
             </Col>
           </div>
         </div>

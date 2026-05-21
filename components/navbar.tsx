@@ -12,7 +12,11 @@ const NAV = [
   { href: "#contact", label: "Get a quote" },
 ]
 
-export function Navbar() {
+type NavbarContact = { phone?: string | null } | null | undefined
+
+export function Navbar({ contact }: { contact?: NavbarContact }) {
+  const phone = contact?.phone || "(973) 555-1212"
+  const telHref = `tel:${phone.replace(/[^+\d]/g, "")}`
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
 
@@ -69,7 +73,7 @@ export function Navbar() {
 
         <div className="flex items-center gap-2">
           <a
-            href="tel:+19735551212"
+            href={telHref}
             className={cn(
               "hidden items-center gap-2 rounded-full px-3 py-2 font-sans text-sm font-semibold transition-colors md:inline-flex",
               scrolled
@@ -78,7 +82,7 @@ export function Navbar() {
             )}
           >
             <Phone className="h-4 w-4" />
-            (973) 555-1212
+            {phone}
           </a>
           <a
             href="#contact"

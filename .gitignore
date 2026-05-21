@@ -9,5 +9,11 @@ instrumentation-client.ts
 node_modules/
 .next/
 .env*.local
+.env
 .DS_Store
 .vercel
+
+# Payload uploads (local dev only — S3 holds them in production)
+/media/
+# Generated Payload types — created on demand
+payload-types.ts
