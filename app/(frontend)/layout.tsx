@@ -1,4 +1,3 @@
-import Script from "next/script"
 import { Archivo, Inter_Tight } from "next/font/google"
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
@@ -102,10 +101,8 @@ export default async function FrontendLayout({
     <div
       className={`${display.variable} ${body.variable} font-sans antialiased bg-background text-foreground`}
     >
-      <Script
-        id="ld-localbusiness"
+      <script
         type="application/ld+json"
-        strategy="beforeInteractive"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <Navbar contact={contact} />

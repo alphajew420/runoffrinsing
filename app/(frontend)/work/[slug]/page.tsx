@@ -1,6 +1,5 @@
 import type { Metadata } from "next"
 import Link from "next/link"
-import Script from "next/script"
 import { notFound } from "next/navigation"
 import { ChevronLeft, ArrowUpRight } from "lucide-react"
 import { RichText } from "@payloadcms/richtext-lexical/react"
@@ -116,10 +115,8 @@ export default async function PastJobPage({
 
   return (
     <>
-      <Script
-        id={`ld-article-${post.slug}`}
+      <script
         type="application/ld+json"
-        strategy="beforeInteractive"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
       />
       {/* Header */}
