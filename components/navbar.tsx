@@ -15,7 +15,7 @@ const NAV = [
 type NavbarContact = { phone?: string | null } | null | undefined
 
 export function Navbar({ contact }: { contact?: NavbarContact }) {
-  const phone = contact?.phone || "(973) 555-1212"
+  const phone = contact?.phone || "(609) 664-6258"
   const telHref = `tel:${phone.replace(/[^+\d]/g, "")}`
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)

@@ -40,14 +40,14 @@ export const Contact: GlobalConfig = {
       name: 'phone',
       type: 'text',
       required: true,
-      defaultValue: '(973) 555-1212',
+      defaultValue: '(609) 664-6258',
       admin: { description: 'Displayed in the navbar, contact section, and footer.' },
     },
     {
       name: 'email',
       type: 'text',
       required: true,
-      defaultValue: 'hello@runoffrinsing.com',
+      defaultValue: 'runoffrinsing@gmail.com',
     },
     {
       name: 'serviceArea',

@@ -32,8 +32,8 @@ export function Contact({ contact }: { contact?: ContactData | null }) {
   const sub =
     contact?.subheading ||
     "Text a couple of photos to the number below or fill the form. Either way you'll hear back the same day."
-  const phone = contact?.phone || "(973) 555-1212"
-  const email = contact?.email || "hello@runoffrinsing.com"
+  const phone = contact?.phone || "(609) 664-6258"
+  const email = contact?.email || "runoffrinsing@gmail.com"
   const serviceArea = contact?.serviceArea || "All of New Jersey"
   const formNote =
     contact?.formNote ||

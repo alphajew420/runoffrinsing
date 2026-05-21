@@ -11,8 +11,8 @@ const DEFAULT_HOURS = [
 ]
 
 export function Footer({ contact }: { contact?: FooterContact }) {
-  const phone = contact?.phone || "(973) 555-1212"
-  const email = contact?.email || "hello@runoffrinsing.com"
+  const phone = contact?.phone || "(609) 664-6258"
+  const email = contact?.email || "runoffrinsing@gmail.com"
   const hours = contact?.hours && contact.hours.length > 0 ? contact.hours : DEFAULT_HOURS
   const telHref = `tel:${phone.replace(/[^+\d]/g, "")}`
 

@@ -1,21 +1,73 @@
 import React from "react"
 import type { Metadata, Viewport } from "next"
 
+const SITE = process.env.NEXT_PUBLIC_SERVER_URL || "https://runoffrinsing.com"
+
 export const metadata: Metadata = {
-  title: "Run Off Rinsing LLC — Pressure Washing in New Jersey",
+  metadataBase: new URL(SITE),
+  title: {
+    default: "Run Off Rinsing LLC — Pressure & Soft Washing in New Jersey",
+    template: "%s · Run Off Rinsing",
+  },
   description:
-    "Soft wash and pressure wash for homes, fences, decks, and driveways across New Jersey. Family-run, fully insured, and obsessive about doing it right the first time.",
-  metadataBase: new URL("https://runoff.shinbetsolutions.com"),
+    "Family-run soft-wash and pressure-wash for siding, roofs, decks, driveways, and fences across New Jersey. Real photos, written quotes, same-day response.",
+  keywords: [
+    "pressure washing NJ",
+    "soft wash New Jersey",
+    "house washing Morris County",
+    "roof cleaning NJ",
+    "vinyl siding cleaning",
+    "driveway pressure washing",
+    "deck cleaning NJ",
+    "Run Off Rinsing",
+  ],
+  authors: [{ name: "Run Off Rinsing LLC" }],
+  alternates: { canonical: SITE },
   openGraph: {
-    title: "Run Off Rinsing LLC",
-    description:
-      "We take dirt off houses so they look like houses again. Serving all of NJ.",
     type: "website",
+    locale: "en_US",
+    siteName: "Run Off Rinsing LLC",
+    url: SITE,
+    title: "Run Off Rinsing LLC — Pressure & Soft Washing in New Jersey",
+    description:
+      "We take dirt off houses so they look like houses again. Family-run, fully insured, serving all of NJ.",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "A two-story NJ home after a Run Off Rinsing soft-wash treatment.",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Run Off Rinsing LLC — NJ Pressure & Soft Washing",
+    description:
+      "Real photos, written quotes, same-day response. Family-run pressure washing across New Jersey.",
+    images: ["/og-image.jpg"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  icons: {
+    icon: "/logo.png",
+    shortcut: "/logo.png",
+    apple: "/logo.png",
   },
 }
 
 export const viewport: Viewport = {
   themeColor: "#0a2447",
+  width: "device-width",
+  initialScale: 1,
 }
 
 // Intentionally minimal: no global CSS or fonts here so the Payload admin

@@ -1,10 +1,13 @@
 import type { Metadata } from "next"
 import Link from "next/link"
+import Script from "next/script"
 import { notFound } from "next/navigation"
 import { ChevronLeft, ArrowUpRight } from "lucide-react"
 import { RichText } from "@payloadcms/richtext-lexical/react"
 import { BeforeAfter } from "@/components/before-after"
 import { getPayload, getMediaUrl } from "@/lib/payload"
+
+const SITE = process.env.NEXT_PUBLIC_SERVER_URL || "https://runoffrinsing.com"
 
 export const dynamic = "force-dynamic"
 
@@ -92,8 +95,33 @@ export default async function PastJobPage({
   const serviceLabel = post.serviceType ? SERVICE_LABELS[post.serviceType] : null
   const gallery: Array<{ image: unknown; caption?: string }> = post.gallery ?? []
 
+  // Article JSON-LD for rich previews in Google. Tied back to the business
+  // entity declared in (frontend)/layout.tsx via the publisher id.
+  const articleJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: post.title,
+    description: post.summary,
+    datePublished: post.date,
+    dateModified: post.updatedAt || post.date,
+    image: featuredUrl ? [featuredUrl] : undefined,
+    author: {
+      "@type": "Organization",
+      name: "Run Off Rinsing LLC",
+    },
+    publisher: { "@id": `${SITE}/#business` },
+    mainEntityOfPage: { "@type": "WebPage", "@id": `${SITE}/work/${post.slug}` },
+    locationCreated: post.location,
+  }
+
   return (
     <>
+      <Script
+        id={`ld-article-${post.slug}`}
+        type="application/ld+json"
+        strategy="beforeInteractive"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+      />
       {/* Header */}
       <section className="relative isolate overflow-hidden bg-ink pt-36 pb-16 text-primary-foreground lg:pt-44 lg:pb-20">
         {featuredUrl ? (
