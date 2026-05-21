@@ -112,7 +112,7 @@ export function BeforeAfter({
         />
         <button
           type="button"
-          aria-label="Drag to compare before and after"
+          aria-label="Drag the sponge to compare before and after"
           aria-valuenow={Math.round(position)}
           aria-valuemin={0}
           aria-valuemax={100}
@@ -124,23 +124,10 @@ export function BeforeAfter({
             document.body.style.userSelect = "none"
             moveToClientX(e.clientX)
           }}
-          className="absolute top-1/2 z-10 flex h-11 w-11 -translate-x-1/2 -translate-y-1/2 cursor-grab items-center justify-center rounded-full bg-background text-primary shadow-lg ring-2 ring-background/80 transition-transform active:cursor-grabbing active:scale-95"
+          className="absolute top-1/2 z-10 -translate-x-1/2 -translate-y-1/2 cursor-grab rounded-[10px] outline-none focus-visible:ring-4 focus-visible:ring-accent/70 transition-transform active:cursor-grabbing active:scale-95"
           style={{ left: `${position}%` }}
         >
-          <svg
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            aria-hidden="true"
-          >
-            <polyline points="15 18 9 12 15 6" />
-            <polyline points="9 18 15 12 9 6" transform="translate(6 0)" />
-          </svg>
+          <Sponge />
         </button>
       </div>
       {caption ? (
@@ -149,5 +136,62 @@ export function BeforeAfter({
         </figcaption>
       ) : null}
     </figure>
+  )
+}
+
+function Sponge() {
+  return (
+    <svg
+      width="46"
+      height="56"
+      viewBox="0 0 46 56"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+      className="drop-shadow-[0_8px_18px_rgba(10,36,71,0.45)]"
+    >
+      {/* yellow sponge body */}
+      <rect x="2" y="14" width="42" height="38" rx="6" fill="#FFD64C" />
+      {/* slight bottom shadow on the body */}
+      <rect x="2" y="44" width="42" height="8" rx="6" fill="#E6B82E" opacity="0.55" />
+      {/* green scrubber strip on top */}
+      <rect x="2" y="4" width="42" height="14" rx="6" fill="#1F9D6B" />
+      <rect x="2" y="14" width="42" height="4" fill="#1F9D6B" />
+      {/* speckles in the scrubber */}
+      <circle cx="9" cy="11" r="1.1" fill="#0F6F4B" />
+      <circle cx="18" cy="9" r="0.9" fill="#0F6F4B" />
+      <circle cx="27" cy="12" r="1.1" fill="#0F6F4B" />
+      <circle cx="36" cy="9" r="0.9" fill="#0F6F4B" />
+      <circle cx="14" cy="14" r="0.7" fill="#0F6F4B" />
+      <circle cx="32" cy="14" r="0.7" fill="#0F6F4B" />
+      {/* sponge pores */}
+      <circle cx="11" cy="26" r="1.6" fill="#E6B82E" />
+      <circle cx="22" cy="22" r="1.2" fill="#E6B82E" />
+      <circle cx="34" cy="28" r="1.8" fill="#E6B82E" />
+      <circle cx="16" cy="35" r="1" fill="#E6B82E" />
+      <circle cx="28" cy="38" r="1.4" fill="#E6B82E" />
+      <circle cx="38" cy="40" r="1" fill="#E6B82E" />
+      <circle cx="8" cy="42" r="1.2" fill="#E6B82E" />
+      <circle cx="22" cy="46" r="1" fill="#E6B82E" />
+      {/* highlight */}
+      <path
+        d="M5 22 Q5 16 11 16 L18 16"
+        stroke="#FFE89B"
+        strokeWidth="2"
+        strokeLinecap="round"
+        opacity="0.85"
+      />
+      {/* outer outline */}
+      <rect
+        x="2"
+        y="4"
+        width="42"
+        height="48"
+        rx="6"
+        stroke="#0a2447"
+        strokeOpacity="0.18"
+        strokeWidth="1"
+      />
+    </svg>
   )
 }
