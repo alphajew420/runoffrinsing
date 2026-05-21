@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react"
 import { Phone } from "lucide-react"
 import { cn } from "@/lib/utils"
+import { staticUrl } from "@/lib/assets"
 
 const NAV = [
   { href: "/work", label: "All work" },
@@ -39,7 +40,7 @@ export function Navbar({ contact }: { contact?: NavbarContact }) {
       <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-3 lg:px-8">
         <a href="#top" className="flex items-center gap-3" aria-label="Run Off Rinsing home">
           <img
-            src="/logo.png"
+            src={staticUrl("logo.png")}
             alt=""
             className="h-12 w-12 object-contain"
             aria-hidden="true"

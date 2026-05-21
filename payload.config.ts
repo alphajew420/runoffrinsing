@@ -52,13 +52,14 @@ export default buildConfig({
           collections: {
             media: cdnHost
               ? {
+                  prefix: 'media',
                   generateFileURL: ({ filename, prefix }) => {
                     const pre = prefix ? `${prefix}/` : ''
                     return `https://${cdnHost}/${pre}${filename}`
                   },
                   disablePayloadAccessControl: true,
                 }
-              : {},
+              : { prefix: 'media' },
           },
           bucket: process.env.S3_BUCKET || '',
           config: {

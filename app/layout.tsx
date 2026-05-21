@@ -1,7 +1,10 @@
 import React from "react"
 import type { Metadata, Viewport } from "next"
+import { staticUrl } from "@/lib/assets"
 
 const SITE = process.env.NEXT_PUBLIC_SERVER_URL || "https://runoffrinsing.com"
+const OG_IMG = staticUrl("og-image.jpg")
+const FAVICON = staticUrl("logo.png")
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE),
@@ -33,7 +36,7 @@ export const metadata: Metadata = {
       "We take dirt off houses so they look like houses again. Family-run, fully insured, serving all of NJ.",
     images: [
       {
-        url: "/og-image.jpg",
+        url: OG_IMG,
         width: 1200,
         height: 630,
         alt: "A two-story NJ home after a Run Off Rinsing soft-wash treatment.",
@@ -45,7 +48,7 @@ export const metadata: Metadata = {
     title: "Run Off Rinsing LLC — NJ Pressure & Soft Washing",
     description:
       "Real photos, written quotes, same-day response. Family-run pressure washing across New Jersey.",
-    images: ["/og-image.jpg"],
+    images: [OG_IMG],
   },
   robots: {
     index: true,
@@ -58,9 +61,9 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: "/logo.png",
-    shortcut: "/logo.png",
-    apple: "/logo.png",
+    icon: FAVICON,
+    shortcut: FAVICON,
+    apple: FAVICON,
   },
 }
 

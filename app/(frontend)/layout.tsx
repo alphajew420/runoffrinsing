@@ -2,6 +2,7 @@ import { Archivo, Inter_Tight } from "next/font/google"
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 import { getPayload } from "@/lib/payload"
+import { staticUrl } from "@/lib/assets"
 
 // Globals + Tailwind preflight only load on /frontend pages; admin uses its own.
 import "@/app/globals.css"
@@ -57,8 +58,12 @@ export default async function FrontendLayout({
     url: SITE,
     telephone: phoneTel,
     email,
-    image: `${SITE}/og-image.jpg`,
-    logo: `${SITE}/logo.png`,
+    image: staticUrl("og-image.jpg").startsWith("http")
+      ? staticUrl("og-image.jpg")
+      : `${SITE}${staticUrl("og-image.jpg")}`,
+    logo: staticUrl("logo.png").startsWith("http")
+      ? staticUrl("logo.png")
+      : `${SITE}${staticUrl("logo.png")}`,
     priceRange: "$$",
     areaServed: {
       "@type": "State",

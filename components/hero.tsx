@@ -1,5 +1,6 @@
 import { ArrowRight, MapPin } from "lucide-react"
 import { getMediaUrl } from "@/lib/payload"
+import { staticUrl } from "@/lib/assets"
 
 type Stat = { label: string; value: string }
 type HeroData = {
@@ -39,8 +40,8 @@ export function Hero({ hero }: { hero?: HeroData | null }) {
   const secondaryLink = hero?.secondaryCtaLink || "#work"
   const stats = hero?.stats && hero.stats.length > 0 ? hero.stats : DEFAULT_STATS
 
-  const videoUrl = getMediaUrl(hero?.video) || "/hero.mp4"
-  const posterUrl = getMediaUrl(hero?.posterImage) || "/hero-poster.jpg"
+  const videoUrl = getMediaUrl(hero?.video) || staticUrl("hero.mp4")
+  const posterUrl = getMediaUrl(hero?.posterImage) || staticUrl("hero-poster.jpg")
 
   return (
     <section id="top" className="relative isolate overflow-hidden bg-ink">

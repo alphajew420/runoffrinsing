@@ -1,3 +1,5 @@
+import { staticUrl } from "@/lib/assets"
+
 type FooterContact = {
   phone?: string | null
   email?: string | null
@@ -22,7 +24,7 @@ export function Footer({ contact }: { contact?: FooterContact }) {
         <div className="grid gap-10 lg:grid-cols-12">
           <div className="lg:col-span-5">
             <div className="flex items-center gap-3">
-              <img src="/logo.png" alt="" className="h-10 w-10 object-contain" aria-hidden="true" />
+              <img src={staticUrl("logo.png")} alt="" className="h-10 w-10 object-contain" aria-hidden="true" />
               <span className="font-display text-base font-extrabold uppercase tracking-[0.16em]">
                 Run Off Rinsing LLC
               </span>
