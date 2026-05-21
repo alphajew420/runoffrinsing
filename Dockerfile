@@ -4,8 +4,12 @@ FROM node:22-alpine AS base
 FROM base AS deps
 WORKDIR /app
 
+# Force devDependencies (tailwindcss, postcss, etc.) even when Coolify
+# bakes NODE_ENV=production into the build environment.
+ENV NODE_ENV=development
+
 COPY package.json package-lock.json* ./
-RUN npm install --legacy-peer-deps --no-audit --no-fund
+RUN npm install --legacy-peer-deps --include=dev --no-audit --no-fund
 
 # ---
 FROM base AS builder
