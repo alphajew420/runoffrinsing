@@ -169,6 +169,20 @@ export function Work({ jobs }: { jobs?: CmsJob[] | null }) {
             ))}
           </div>
         ) : null}
+
+        <div className="mt-20 flex flex-col items-start justify-between gap-4 border-t border-border pt-8 sm:flex-row sm:items-center">
+          <p className="max-w-md font-sans text-sm text-muted-foreground">
+            Want to see the full archive? Every house, drive, and deck we've washed lives
+            on the all-work page.
+          </p>
+          <a
+            href="/work"
+            className="group inline-flex items-center gap-2 rounded-sm bg-primary px-6 py-4 font-display text-sm font-bold uppercase tracking-[0.14em] text-primary-foreground transition-transform hover:translate-y-[-1px]"
+          >
+            All work
+            <span aria-hidden className="transition-transform group-hover:translate-x-0.5">→</span>
+          </a>
+        </div>
       </div>
     </section>
   )

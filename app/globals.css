@@ -58,3 +58,48 @@
 .before-after {
   --reveal: 50%;
 }
+
+/* light typographic styling for past-job richText output */
+.prose-job h2 {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: -0.005em;
+  color: hsl(var(--foreground));
+  font-size: 1.5rem;
+  line-height: 1.15;
+  margin-top: 2.5rem;
+  margin-bottom: 0.75rem;
+}
+.prose-job h3 {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-weight: 700;
+  color: hsl(var(--foreground));
+  font-size: 1.125rem;
+  line-height: 1.2;
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+}
+.prose-job p {
+  margin: 0;
+}
+.prose-job ul, .prose-job ol {
+  padding-left: 1.4rem;
+}
+.prose-job ul { list-style: disc; }
+.prose-job ol { list-style: decimal; }
+.prose-job li { margin: 0.25rem 0; }
+.prose-job a {
+  color: hsl(var(--primary));
+  text-decoration: underline;
+  text-decoration-color: hsl(var(--accent));
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
+.prose-job blockquote {
+  border-left: 3px solid hsl(var(--accent));
+  padding-left: 1rem;
+  color: hsl(var(--muted-foreground));
+  font-style: italic;
+}
+.prose-job strong { color: hsl(var(--foreground)); font-weight: 700; }

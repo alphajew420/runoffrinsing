@@ -5,11 +5,11 @@ import { Phone } from "lucide-react"
 import { cn } from "@/lib/utils"
 
 const NAV = [
-  { href: "#work", label: "Our work" },
-  { href: "#services", label: "What we wash" },
-  { href: "#process", label: "How it works" },
-  { href: "#about", label: "About" },
-  { href: "#contact", label: "Get a quote" },
+  { href: "/work", label: "All work" },
+  { href: "/#services", label: "What we wash" },
+  { href: "/#process", label: "How it works" },
+  { href: "/#about", label: "About" },
+  { href: "/#contact", label: "Get a quote" },
 ]
 
 type NavbarContact = { phone?: string | null } | null | undefined
@@ -85,7 +85,7 @@ export function Navbar({ contact }: { contact?: NavbarContact }) {
             {phone}
           </a>
           <a
-            href="#contact"
+            href="/#contact"
             className="inline-flex items-center rounded-sm bg-primary px-4 py-2.5 font-display text-[13px] font-bold uppercase tracking-[0.12em] text-primary-foreground transition-colors hover:bg-primary/90"
           >
             Free quote

@@ -11,6 +11,7 @@ import { Media } from './collections/Media'
 import { Service } from './collections/Service'
 import { ProcessStep } from './collections/ProcessStep'
 import { BeforeAfterJob } from './collections/BeforeAfterJob'
+import { PastJob } from './collections/PastJob'
 
 import { Hero } from './globals/Hero'
 import { About } from './globals/About'
@@ -28,7 +29,7 @@ export default buildConfig({
       titleSuffix: ' | Run Off Rinsing CMS',
     },
   },
-  collections: [User, Media, Service, ProcessStep, BeforeAfterJob],
+  collections: [User, Media, Service, ProcessStep, BeforeAfterJob, PastJob],
   globals: [Hero, About, Contact],
   db: postgresAdapter({
     pool: { connectionString: process.env.DATABASE_URL || '' },
