@@ -58,6 +58,9 @@ const nextConfig = {
         { source: "/admin/:path*", destination: `${CMS_INTERNAL}/admin/:path*` },
         { source: "/api/:path*", destination: `${CMS_INTERNAL}/api/:path*` },
       ],
+      afterFiles: [
+        { source: "/_next/:path*", destination: `${CMS_INTERNAL}/_next/:path*` },
+      ],
     }
   },
   typescript: {
