@@ -4,6 +4,7 @@ import { withPayload } from "@payloadcms/next/withPayload"
 // service over the internal docker network. The site’s own pages remain
 // untouched.
 const CMS_INTERNAL = process.env.CMS_INTERNAL_URL || "http://cms:3000"
+const USE_CENTRAL = process.env.USE_CENTRAL_CMS === "true" || process.env.USE_CENTRAL_CMS === "1"
 
 
 const cdnHost = process.env.S3_CDN_HOST
@@ -52,6 +53,7 @@ const frontendCSP = {
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   async rewrites() {
+    if (!USE_CENTRAL) return []
     return {
       beforeFiles: [
         { source: "/admin", destination: `${CMS_INTERNAL}/admin` },
