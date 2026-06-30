@@ -11,10 +11,10 @@ export const getPayloadClient = async (): Promise<any> => ({
   },
 })
 
-/** Backwards-compat alias for repos that imported the function as `getPayload`. */
+/** Backwards-compat alias for repos that imported as `getPayload`. */
 export const getPayload = getPayloadClient
 
-/** Extract URL from a Payload media field (object with .url or a raw ID). */
+/** Extract URL from a Payload media field. */
 export function getMediaUrl(field: unknown): string {
   if (typeof field === "object" && field !== null && "url" in field) {
     return (field as { url: string }).url || ""
