@@ -40,10 +40,6 @@ ENV S3_ACCESS_KEY_ID=${S3_ACCESS_KEY_ID}
 ENV S3_SECRET_ACCESS_KEY=${S3_SECRET_ACCESS_KEY}
 ENV S3_CDN_HOST=${S3_CDN_HOST}
 
-# Push DB schema + generate admin importMap + seed default content.
-# Fails silently if DB unreachable at build time (e.g. for static-only build).
-  || echo "(skipped — db unreachable at build time)"
-
 ENV NODE_ENV=production
 RUN npm run build
 
