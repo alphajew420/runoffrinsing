@@ -42,7 +42,6 @@ ENV S3_CDN_HOST=${S3_CDN_HOST}
 
 # Push DB schema + generate admin importMap + seed default content.
 # Fails silently if DB unreachable at build time (e.g. for static-only build).
-RUN NODE_OPTIONS="--require /app/scripts/patch-next-env.cjs" npx tsx scripts/push-schema.mjs \
   || echo "(skipped — db unreachable at build time)"
 
 ENV NODE_ENV=production
